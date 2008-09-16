@@ -1,0 +1,8 @@
+import(Biostrings)
+import(BSgenome)
+importFrom("Biobase", "combine")
+
+exportPattern("^[^\\.]")
+exportClasses(MEDMEset)
+exportMethods(initialize, chr, pos, logR, smoothed, AMS, RMS, CG, gR, "[", show)
+

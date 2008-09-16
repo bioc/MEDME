@@ -1,0 +1,20 @@
+citHeader("To cite package 'MEDME' in publications use:")
+     
+     desc <- packageDescription("MEDME")
+     vers <- paste("R package version", desc$Version)
+     
+     citEntry(entry="Article",
+              title = "MEDME: An experimental and analytical methodology for the estimation of DNA methylation levels based on microarray derived MeDIP-enrichment",
+              author = personList(as.person("Mattia Pelizzola"),
+                                  as.person("Yasuo Koga"),
+                                  as.person("Alexander Eckehart Urban"),
+                                  as.person("Michael Krauthammer"),
+                                  as.person("Sherman Weissman"),
+                                  as.person("Ruth Halaban"),
+                                  as.person("Annette Molinaro")),
+	      journal="Genome Research",
+              year = 2008,
+              note = vers,
+     
+              textVersion ="Mattia Pelizzola, Yasuo Koga, Alexander Eckehart Urban, Michael Krauthammer, Sherman Weissman, Ruth Halaban and Annette M. Molinaro; MEDME: An experimental and analytical methodology for the estimation of DNA methylation levels based on microarray derived MeDIP-enrichment; Genome Research, 2008"
+)
