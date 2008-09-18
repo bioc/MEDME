@@ -11,12 +11,27 @@
 
         Nrow = nrow(.Object@logR)
         Ncol = ncol(.Object@logR)
-         NAmat = matrix(NA, Nrow, Ncol)
-         rownames(NAmat) = rownames(.Object@logR)
-         colnames(NAmat) = colnames(.Object@logR)
+        NAmat = matrix(NA, Nrow, Ncol)
+        rownames(NAmat) = rownames(.Object@logR)
+        colnames(NAmat) = colnames(.Object@logR)
         if(nrow(.Object@smoothed) == 0) .Object@smoothed = NAmat
         if(nrow(.Object@AMS) == 0) .Object@AMS = NAmat
         if(nrow(.Object@RMS) == 0) .Object@RMS = NAmat
+        
+        # checking unexpected probe chromosomal assignments
+        # eliminating probes with chromosomes not included in chrs
+        chrs = c(paste('chr', 1:22, sep=''), 'chrX', 'chrY')
+        probeChr = .Object@chr
+        extrachrInds = which(!(probeChr %in% chrs))
+        if(length(extrachrInds)>0) {
+            .Object@chr = .Object@chr[-extrachrInds]
+            .Object@pos = .Object@pos[-extrachrInds]
+            .Object@logR = .Object@logR[-extrachrInds, ]
+            .Object@smoothed = .Object@smoothed[-extrachrInds, ]
+            .Object@AMS = .Object@AMS[-extrachrInds, ]
+            .Object@RMS = .Object@RMS[-extrachrInds, ]
+            warning('probes assigned to chromosomes other than {chr1, .., chr22, chrX, chrY} have been excluded ..\n')
+        }
         .Object
     })
 
