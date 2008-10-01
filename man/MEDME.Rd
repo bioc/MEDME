@@ -24,6 +24,7 @@ The logistic model as returned from the multdrc function from the drc R library
 data(testMEDMEset)
 ## just an example with the first 1000 probes
 testMEDMEset = smooth(data = testMEDMEset[1:1000, ])
+library(BSgenome.Hsapiens.UCSC.hg18)
 testMEDMEset = CGcount(data = testMEDMEset)
 MEDMEmodel = MEDME(data = testMEDMEset, sample = 1, CGcountThr = 1, figName = NULL)
 }

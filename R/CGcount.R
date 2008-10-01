@@ -7,13 +7,7 @@ function (data, wsize = 1000, wFunction = "linear")
     if (length(wsize) > 1) 
         stop("wsize needs to be 1 number ..")
     wsize = round(wsize)
-    hgRelease = gR(data)
-    if (hgRelease != "hg17" && hgRelease != "hg18")
-        stop("currently only hgReleases hg17 and hg18 are supported ..")
-    if (hgRelease == "hg17")
-        require(BSgenome.Hsapiens.UCSC.hg17)
-    if (hgRelease == "hg18") 
-        require(BSgenome.Hsapiens.UCSC.hg18)
+    orgname = org(data)
     if (wFunction != "linear" && wFunction != "exp" && wFunction !=
         "log" && wFunction != "none")
         stop("wFunction needs to be one of [linear, exp, log or none] ..")
@@ -45,7 +39,8 @@ function (data, wsize = 1000, wFunction = "linear")
         if (length(chrinds) == 0) 
             next
         cat(chr, " ")
-        chrseq = Hsapiens[[chr]]
+        if(orgname == 'hsa') chrseq = Hsapiens[[chr]]
+        else chrseq = Mmusculus[[chr]]
         allmatches<-start(matchPattern(pattern, chrseq))
         rm(chrseq)
         gc()
@@ -63,7 +58,7 @@ function (data, wsize = 1000, wFunction = "linear")
         gc()
     }
     cat("\n")
-    MEDMEcgset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = smoothed(data), AMS = AMS(data), RMS = RMS(data), CGcount = as.numeric(CGwindow), genomeRelease=gR(data))
+    MEDMEcgset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = smoothed(data), AMS = AMS(data), RMS = RMS(data), CGcount = as.numeric(CGwindow), organism=org(data))
     return(MEDMEcgset)
 }
 

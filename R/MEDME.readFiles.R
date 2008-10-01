@@ -1,5 +1,5 @@
 `MEDME.readFiles` <-
-function(path = getwd(), files = NULL, format, hgRelease) {
+function(path = getwd(), files = NULL, format, organism) {
     format = tolower(format)
     # checks
     if(format!='sgr' && format!='gff') {stop('format has to be either sgr or gff ..')}
@@ -11,8 +11,6 @@ function(path = getwd(), files = NULL, format, hgRelease) {
             if(length(grep('gff', dir(path)))==0) stop('there are not gff files in the provided path ..')
         }
     }
-    if (hgRelease != "hg17" && hgRelease != "hg18")
-        stop("currently only hgReleases hg17 and hg18 are supported ..")
 
 
     chrs = c(paste('chr', 1:22, sep=''), 'chrX', 'chrY')
@@ -74,6 +72,6 @@ function(path = getwd(), files = NULL, format, hgRelease) {
     if(length(intersect(datachr, chrs))==0) warning('currently only human chromosome names formatted as chr1, chr2, .. , chrX, chrY are supported ..')
     
     # creating MEDMEset object
-    MEDMEsetObj = new('MEDMEset', chr = datain$chr, pos = datain$pos, logR = as.matrix(datain[,3:ncol(datain)]), genomeRelease = hgRelease)
+    MEDMEsetObj = new('MEDMEset', chr = datain$chr, pos = datain$pos, logR = as.matrix(datain[,3:ncol(datain)]), organism = organism)
     return(MEDMEsetObj)
 }

@@ -12,7 +12,8 @@ CGcount(data, wsize = 1000, wFunction = "linear")
   \item{wsize}{ number; the size of the smoothing window, in bp }
   \item{wFunction}{string; the type of weighting function, to choose among linear, exp, log or none }
 }
-\details{Only hg17 and hg18 genome releases are currenlty supported. The respective genomic sequence is downloaded if it is not currenlty available on the system (around 800Mb). The genomeRelease of the data object needs to be filled with either hg17 or hg18 genome releases using the gR method.}
+\details{Only human and mouse are currently supported. The respective genomic sequence metadata library needs to be downloaded from the Bioconductor website, installed and loaded (around 800Mb). Please
+note that only the last genome release should be used. LiftOver UCSC tool could be used for batch conversion of old genomic position to the last genome release.}
 \value{
 An object of class MEDMEset is returned where the count of CpGs for each probe has been saved on the CGcount slot.
 }
@@ -23,5 +24,6 @@ An object of class MEDMEset is returned where the count of CpGs for each probe h
 data(testMEDMEset)
 ## just an example with the first 1000 probes
 testMEDMEset = smooth(data = testMEDMEset[1:1000,])
+library(BSgenome.Hsapiens.UCSC.hg18)
 testMEDMEset = CGcount(data = testMEDMEset)
 }

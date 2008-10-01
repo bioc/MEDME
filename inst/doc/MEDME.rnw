@@ -52,7 +52,7 @@ The dataset is an object of class \textit{MEDMEset}. This class contains slots t
 assignment as well as genomic position and CGcount information are available too. Some of these slot can be empty at the beginning of the analysis
 and will be filled by the respective methods (type \textit{class?MEDMEset} at the R prompt for more information).
 
-The test dataset contains calibration as well as experimental data for 50000 probes tiled on the human chrX. See the references for the complete dataset and additional details.
+The test dataset contains calibration as well as experimental data for almost 50000 probes tiled on the human chrX. See the references for the complete dataset and additional details.
 The logR slot of the test dataset contains the MeDIP enrichment of the fully-methylated sample in the first column. The last two columns
 contain the MeDIP enrichment of two cell strains. NBMEL are cells from newborn melanocytes, while YUSAC2 is a melanoma strain.
 
@@ -69,9 +69,12 @@ testMEDMEset = smooth(data = testMEDMEset, wsize = 1000, wFunction = 'linear')
 
 One could optionally try different window sizes and/or weighting functions. The smoothed data are automatically saved in the smoothed slot of the MEDMEset object.
 As anticipated briefly above, before fitting the model it is necessary to determine the expected methylation level for each probe. This is performed by determining
-the \texttt{probe-level CpG content}. This depends on the genome release of the probe genomic positions. At the moment only human hg17 and 18 are possible choices.
+the \texttt{probe-level CpG content}. The metadata library with the genomic sequence should be already installed and loaded into R. Only human (hsa) and mouse (mmu) genomes are
+currently supported in this function.  Please note that only the last genome release should be used. LiftOver UCSC tool could be used
+for batch conversion of old genomic position to the last genome release.
 
 <<MEDMEcpg, echo=TRUE, results=hide>>=
+library(BSgenome.Hsapiens.UCSC.hg18)
 testMEDMEset = CGcount(data = testMEDMEset)
 @
 

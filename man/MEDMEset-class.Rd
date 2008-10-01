@@ -5,8 +5,7 @@
 \alias{AMS,MEDMEset-method}
 \alias{CGcount,MEDMEset-method}
 \alias{chr,MEDMEset-method}
-\alias{gR,MEDMEset-method}
-\alias{gR<-,MEDMEset-method}
+\alias{org,MEDMEset-method}
 \alias{initialize,MEDMEset-method}
 \alias{logR,MEDMEset-method}
 \alias{pos,MEDMEset-method}
@@ -16,7 +15,7 @@
 \alias{AMS}
 \alias{CG}
 \alias{chr}
-\alias{gR}
+\alias{org}
 \alias{logR}
 \alias{pos}
 \alias{RMS}
@@ -42,7 +41,7 @@ logR or Absolute/Relative Methylation Scores (AMS and RMS respectively). At the 
     \item{\code{AMS}:}{Object of class \code{"matrix"}  : the probe-level Absolute Methylation Score for each sample}
     \item{\code{RMS}:}{Object of class \code{"matrix"}  : the probe-level Relative Methylation Score for each sample}
     \item{\code{CGcount}:}{Object of class \code{"numeric"}  : the probe-level count of CpGs}
-    \item{\code{genomeRelease}:}{Object of class \code{"character"} : the genomic release that the probe genomic positions are referring to}
+    \item{\code{organism}:}{Object of class \code{"character"} : the organism that the probe genomic positions are referring to, either hsa or mmu for homo sapiens or mus musculus respectively}
   }
 }
 \section{Methods}{
@@ -51,7 +50,7 @@ logR or Absolute/Relative Methylation Scores (AMS and RMS respectively). At the 
     \item{AMS}{\code{signature(object = "MEDMEset")}: extracts the Absolute Methylation Score from the AMS slot}
     \item{CG}{\code{signature(object = "MEDMEset")}: extracts the probe CpG count from the CGcount slot}
     \item{chr}{\code{signature(object = "MEDMEset")}: extracts the probe chromosomal assignment}
-    \item{gR}{\code{signature(object = "MEDMEset")}: extracts the genome release}
+    \item{org}{\code{signature(object = "MEDMEset")}: extracts the organism}
     \item{initialize}{\code{signature(.Object = "MEDMEset")}: automatically generates smoothed, AMS and RMS matrix when only the logR slot is filled}
     \item{logR}{\code{signature(object = "MEDMEset")}: extracts the matrix of MeDIP un-transformed logRatios }
     \item{pos}{\code{signature(object = "MEDMEset")}: extracts the probe genomic position}

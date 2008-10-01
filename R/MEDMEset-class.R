@@ -1,5 +1,5 @@
     #### class definition
-    setClass(Class = 'MEDMEset', representation = representation(chr='character', pos='numeric', logR='matrix', smoothed='matrix', AMS='matrix', RMS='matrix', CGcount='numeric', genomeRelease='character'))
+    setClass(Class = 'MEDMEset', representation = representation(chr='character', pos='numeric', logR='matrix', smoothed='matrix', AMS='matrix', RMS='matrix', CGcount='numeric', organism='character'))
     # initialize method to generated empty smoothed, AMS and RMS matrix when an obect is created filling on ly the logR slot
     setMethod('initialize', 'MEDMEset', function(.Object, ...) {
         .Object <- callNextMethod()
@@ -32,43 +32,39 @@
             .Object@RMS = .Object@RMS[-extrachrInds, ]
             warning('probes assigned to chromosomes other than {chr1, .., chr22, chrX, chrY} have been excluded ..\n')
         }
+        
+        # checking organism, needs to be either hsa or mmu
+        orgname = .Object@organism
+        if(orgname != 'hsa' && orgname != 'mmu') stop('organism needs to be either hsa or mmu, for homo sapiens and mus musculus respectively ..\n')
         .Object
     })
 
 
-    #### defining methods to extract chr, pos, logR, CGcount and genomeRelease (the latter with replacement too) as well as extension of [ and show methods
+    #### defining methods to extract chr, pos, logR, CGcount and organism as well as extension of [ and show methods
     # chr
-    #chrfun = function(object) standardGeneric('chr')
     setGeneric('chr', function(object) standardGeneric('chr'))
     setMethod('chr','MEDMEset', function(object) object@chr)
     # pos
-    #posfun = function(object) standardGeneric('pos')
     setGeneric('pos', function(object) standardGeneric('pos'))
     setMethod('pos','MEDMEset', function(object) object@pos)
     # logR
-    #logRfun = function(object) standardGeneric('logR')
     setGeneric('logR', function(object) standardGeneric('logR'))
     setMethod('logR','MEDMEset', function(object) object@logR)
     # smoothed
-    #smoothedfun = function(object) standardGeneric('smoothed')
     setGeneric('smoothed', function(object) standardGeneric('smoothed'))
     setMethod('smoothed','MEDMEset', function(object) object@smoothed)
     # AMS
-    #AMSfun = function(object) standardGeneric('AMS')
     setGeneric('AMS', function(object) standardGeneric('AMS'))
     setMethod('AMS','MEDMEset', function(object) object@AMS)
     # RMS
-    #RMSfun = function(object) standardGeneric('RMS')
     setGeneric('RMS', function(object) standardGeneric('RMS'))
     setMethod('RMS','MEDMEset', function(object) object@RMS)
     # CGcount
-    #CGcountfun = function(object) standardGeneric('CG')
     setGeneric('CG', function(object) standardGeneric('CG'))
     setMethod('CG','MEDMEset', function(object) object@CGcount)
-    # genomeRelease
-    #gRfun = function(object) standardGeneric('gR')
-    setGeneric('gR', function(object) standardGeneric('gR'))
-    setMethod('gR','MEDMEset', function(object) object@genomeRelease)
+    # organism
+    setGeneric('org', function(object) standardGeneric('org'))
+    setMethod('org','MEDMEset', function(object) object@organism)
 
     # subset
     setMethod('[','MEDMEset', function(x, i, j, drop) {
@@ -77,7 +73,7 @@
         x@chr = x@chr[i]
         x@pos = x@pos[i]
         x@logR = as.matrix(x@logR[i,j])
-	x@smoothed = as.matrix(x@smoothed[i,j])
+        x@smoothed = as.matrix(x@smoothed[i,j])
         x@AMS = as.matrix(x@AMS[i,j])
         x@RMS = as.matrix(x@RMS[i,j])
         x@CGcount = x@CGcount[i]
@@ -103,8 +99,8 @@
             show(object@RMS[1:maxP,])
             cat("CGcount : ")
             cat(object@CGcount[1:maxP])
-            cat("\ngenomeRelease : ")
-            cat(object@genomeRelease)
+            cat("\norganism : ")
+            cat(object@organism)
             cat('\n')
         })
 

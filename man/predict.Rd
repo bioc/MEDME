@@ -24,6 +24,7 @@ An object of class MEDMEset. The resulting smoothed data, the absolute  and rela
 data(testMEDMEset)
 ## just an example with the first 1000 probes
 testMEDMEset = smooth(data = testMEDMEset[1:1000, ])
+library(BSgenome.Hsapiens.UCSC.hg18)
 testMEDMEset = CGcount(data = testMEDMEset)
 MEDMEmodel = MEDME(data = testMEDMEset, sample = 1, CGcountThr = 1, figName = NULL)
 testMEDMEset = predict(data = testMEDMEset, MEDMEfit = MEDMEmodel, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
