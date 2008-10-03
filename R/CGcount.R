@@ -58,7 +58,7 @@ function (data, wsize = 1000, wFunction = "linear")
         gc()
     }
     cat("\n")
-    MEDMEcgset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = smoothed(data), AMS = AMS(data), RMS = RMS(data), CGcount = as.numeric(CGwindow), organism=org(data))
+    MEDMEcgset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = smoothed(data), AMS = AMS(data), RMS = RMS(data), CGcounts = as.numeric(CGwindow), organism=org(data))
     return(MEDMEcgset)
 }
 

@@ -41,7 +41,7 @@ function(data, wsize=1000, wFunction='linear') {
         MeDIPw = rbind(MeDIPw, MeDIPwChr)
     }
     MeDIPw = as.matrix(MeDIPw)[rownames(probeMeDIP),]
-    MeDIPwset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = MeDIPw, AMS = AMS(data), RMS = RMS(data), CGcount = CG(data), organism=org(data))
+    MeDIPwset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = MeDIPw, AMS = AMS(data), RMS = RMS(data), CGcounts = CG(data), organism=org(data))
     cat('\n')
     return(MeDIPwset)
 }

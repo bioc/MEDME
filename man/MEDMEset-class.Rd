@@ -3,7 +3,7 @@
 \alias{MEDMEset-class}
 \alias{[,MEDMEset-method}
 \alias{AMS,MEDMEset-method}
-\alias{CGcount,MEDMEset-method}
+\alias{CG,MEDMEset-method}
 \alias{chr,MEDMEset-method}
 \alias{org,MEDMEset-method}
 \alias{initialize,MEDMEset-method}
@@ -14,14 +14,14 @@
 \alias{smoothed,MEDMEset-method}
 \alias{AMS}
 \alias{CG}
+\alias{CGcounts}
 \alias{chr}
 \alias{org}
+\alias{organism}
 \alias{logR}
 \alias{pos}
 \alias{RMS}
 \alias{smoothed}
-\alias{CG,MEDMEset-method}
-\alias{siglist,MEDMEset-method}
 
 \title{Class "MEDMEset"}
 \description{ This class is used in MEDME library to store MeDIP derived DNA-methylation estimates and to save further elaboration of these, in association with chromosomal and positional probe information}
@@ -40,7 +40,7 @@ logR or Absolute/Relative Methylation Scores (AMS and RMS respectively). At the 
     \item{\code{smoothed}:}{Object of class \code{"matrix"} : the probe-level smoothed MeDIP logRatios for each sample}
     \item{\code{AMS}:}{Object of class \code{"matrix"}  : the probe-level Absolute Methylation Score for each sample}
     \item{\code{RMS}:}{Object of class \code{"matrix"}  : the probe-level Relative Methylation Score for each sample}
-    \item{\code{CGcount}:}{Object of class \code{"numeric"}  : the probe-level count of CpGs}
+    \item{\code{CGcounts}:}{Object of class \code{"numeric"}  : the probe-level count of CpGs}
     \item{\code{organism}:}{Object of class \code{"character"} : the organism that the probe genomic positions are referring to, either hsa or mmu for homo sapiens or mus musculus respectively}
   }
 }
@@ -48,7 +48,7 @@ logR or Absolute/Relative Methylation Scores (AMS and RMS respectively). At the 
   \describe{
     \item{[}{\code{signature(x = "MEDMEset")}: subsets the object based on its probes and/or samples}
     \item{AMS}{\code{signature(object = "MEDMEset")}: extracts the Absolute Methylation Score from the AMS slot}
-    \item{CG}{\code{signature(object = "MEDMEset")}: extracts the probe CpG count from the CGcount slot}
+    \item{CG}{\code{signature(object = "MEDMEset")}: extracts the probe CpG count from the CGcounts slot}
     \item{chr}{\code{signature(object = "MEDMEset")}: extracts the probe chromosomal assignment}
     \item{org}{\code{signature(object = "MEDMEset")}: extracts the organism}
     \item{initialize}{\code{signature(.Object = "MEDMEset")}: automatically generates smoothed, AMS and RMS matrix when only the logR slot is filled}

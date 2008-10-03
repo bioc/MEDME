@@ -1,8 +1,8 @@
 Package: MEDME
 Type: Package
 Title: Modelling Experimental Data from MeDIP Enrichment
-Version: 1.0.2
-Date: 2008-09-30
+Version: 1.0.3
+Date: 2008-10-03
 Author: Mattia Pelizzola and Annette Molinaro
 Description: MEDME allows the determination of absolute and relative DNA methylation scores from MeDIP enrichment measurements  
 Maintainer: Mattia Pelizzola <mattia.pelizzola@gmail.com>

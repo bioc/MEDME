@@ -1,5 +1,5 @@
     #### class definition
-    setClass(Class = 'MEDMEset', representation = representation(chr='character', pos='numeric', logR='matrix', smoothed='matrix', AMS='matrix', RMS='matrix', CGcount='numeric', organism='character'))
+    setClass(Class = 'MEDMEset', representation = representation(chr='character', pos='numeric', logR='matrix', smoothed='matrix', AMS='matrix', RMS='matrix', CGcounts='numeric', organism='character'))
     # initialize method to generated empty smoothed, AMS and RMS matrix when an obect is created filling on ly the logR slot
     setMethod('initialize', 'MEDMEset', function(.Object, ...) {
         .Object <- callNextMethod()
@@ -17,6 +17,7 @@
         if(nrow(.Object@smoothed) == 0) .Object@smoothed = NAmat
         if(nrow(.Object@AMS) == 0) .Object@AMS = NAmat
         if(nrow(.Object@RMS) == 0) .Object@RMS = NAmat
+	if(length(.Object@CGcounts) == 0) .Object@CGcounts = as.numeric(rep(NA, Nrow))
         
         # checking unexpected probe chromosomal assignments
         # eliminating probes with chromosomes not included in chrs
@@ -40,7 +41,7 @@
     })
 
 
-    #### defining methods to extract chr, pos, logR, CGcount and organism as well as extension of [ and show methods
+    #### defining methods to extract chr, pos, logR, CGcounts and organism as well as extension of [ and show methods
     # chr
     setGeneric('chr', function(object) standardGeneric('chr'))
     setMethod('chr','MEDMEset', function(object) object@chr)
@@ -61,7 +62,7 @@
     setMethod('RMS','MEDMEset', function(object) object@RMS)
     # CGcount
     setGeneric('CG', function(object) standardGeneric('CG'))
-    setMethod('CG','MEDMEset', function(object) object@CGcount)
+    setMethod('CG','MEDMEset', function(object) object@CGcounts)
     # organism
     setGeneric('org', function(object) standardGeneric('org'))
     setMethod('org','MEDMEset', function(object) object@organism)
@@ -76,7 +77,7 @@
         x@smoothed = as.matrix(x@smoothed[i,j])
         x@AMS = as.matrix(x@AMS[i,j])
         x@RMS = as.matrix(x@RMS[i,j])
-        x@CGcount = x@CGcount[i]
+        x@CGcounts = x@CGcounts[i]
         x
     })
 
@@ -97,8 +98,8 @@
             show(object@AMS[1:maxP,])
             cat("\nRMS :\n")
             show(object@RMS[1:maxP,])
-            cat("CGcount : ")
-            cat(object@CGcount[1:maxP])
+            cat("CGcounts : ")
+            cat(object@CGcounts[1:maxP])
             cat("\norganism : ")
             cat(object@organism)
             cat('\n')

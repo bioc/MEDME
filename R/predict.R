@@ -69,7 +69,7 @@ function(data, MEDMEfit, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linea
 
     cat('done\n')
 
-    MEDMEmsset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = as.matrix(MeDIPw), AMS = as.matrix(AMS), RMS= as.matrix(RMS), CGcount = CG(data), organism=org(data))
+    MEDMEmsset = new('MEDMEset', chr = probeChr, pos = probePos, logR = logR(data), smoothed = as.matrix(MeDIPw), AMS = as.matrix(AMS), RMS= as.matrix(RMS), CGcounts = CG(data), organism=org(data))
     return(MEDMEmsset)
 }
 
