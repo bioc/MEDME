@@ -1,7 +1,7 @@
 \name{MEDMEset-class}
 \docType{class}
 \alias{MEDMEset-class}
-\alias{[,MEDMEset-method}
+\alias{[,MEDMEset,ANY,ANY,ANY-method}
 \alias{AMS,MEDMEset-method}
 \alias{CG,MEDMEset-method}
 \alias{chr,MEDMEset-method}
