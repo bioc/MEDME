@@ -1,3 +1,4 @@
+import(IRanges)
 import(Biostrings)
 import(BSgenome)
 importFrom("Biobase", "combine")
