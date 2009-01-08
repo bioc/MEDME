@@ -1,9 +1,6 @@
 import(IRanges)
 import(Biostrings)
-import(BSgenome)
-importFrom("Biobase", "combine")
 
 exportPattern("^[^\\.]")
 exportClasses(MEDMEset)
 exportMethods(initialize, chr, pos, logR, smoothed, AMS, RMS, CG, org, "[", show)
-
