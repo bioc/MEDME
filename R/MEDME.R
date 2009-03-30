@@ -38,7 +38,7 @@ function(data, sample, CGcountThr = 1, figName = NULL) {
 		dataMedian = dataMedian[-dmNAinds]
 		bins = bins[-dmNAinds]
 	}
-        MEDMEmod = multdrc(dataMedian~bins)
+        MEDMEmod = drm(dataMedian~bins, data=data.frame(dataMedian=dataMedian, bins=bins), fct=LL.4())
         lines(bins, fitted(MEDMEmod), lwd=4, col='blue')
     if(!is.null(figName)) dev.off()
     return(MEDMEmod)
