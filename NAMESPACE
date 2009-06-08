@@ -1,5 +1,9 @@
-import(IRanges)
-import(Biostrings)
+importMethodsFrom(Biostrings, matchPattern)
+importFrom(Biostrings, DNAString)
+
+importFrom(drc, drm, LL.4)
+
+importFrom(MASS, kde2d)
 
 exportPattern("^[^\\.]")
 exportClasses(MEDMEset)
