@@ -36,7 +36,7 @@ In order to fit the model on the fully methylated dataset one needs to know the 
 determine its expected DNA methylation level. The probe-level CpG content can be determined using the \textit{CGcount} function.
 The logistic model can be then fitted on the MeDIP smoothed data of the fully-methylated sample using the function \textit{MEDME}.
 
-Finally the model can be applied on the experimental MeDIP data, using the function \textit{predict}. This allows the determination of experimental MeDIP smoothed data
+Finally the model can be applied on the experimental MeDIP data, using the function \textit{MEDME.predict}. This allows the determination of experimental MeDIP smoothed data
 as well as absolute and relative methylation scores (AMS and RMS respectively). Final results may be exported to
 GFF or SGR files using the \textit{MEDME.writeFiles} function. This can be useful to visualize the results with genome browser softwares.
 
@@ -92,7 +92,7 @@ MEDMEmodel = MEDME(data = testMEDMEset, sample = 1)
 Finally, the model can be applied on the experimental data in order to \texttt{predict probe-level AMS and RMS}.
 
 <<MEDMErun, echo=TRUE, results=hide>>=
-testMEDMEset = predict(data = testMEDMEset, MEDMEfit = MEDMEmodel, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
+testMEDMEset = MEDME.predict(data = testMEDMEset, MEDMEfit = MEDMEmodel, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
 @
 
 AMS and RMS have been automatically saved in the AMS and RMS lot of the MEDMEset object. All the generated data can be retrieved

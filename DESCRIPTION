@@ -1,15 +1,15 @@
 Package: MEDME
 Type: Package
 Title: Modelling Experimental Data from MeDIP Enrichment
-Version: 1.16.0
+Version: 1.16.1
 Date: 2009-3-26
 Author: Mattia Pelizzola and Annette Molinaro
 Description: MEDME allows the determination of absolute and relative DNA methylation scores from MeDIP enrichment measurements  
 Maintainer: Mattia Pelizzola <mattia.pelizzola@gmail.com>
-Depends: R (>= 2.10), grDevices, graphics, methods, stats, utils
+Depends: R (>= 2.15), grDevices, graphics, methods, stats, utils
 Imports: Biostrings, MASS, drc
 Suggests: BSgenome.Hsapiens.UCSC.hg18, BSgenome.Mmusculus.UCSC.mm9
 Description: MEDME allows the prediction of absolute and relative methylation levels based on measures obtained by MeDIP-microarray experiments
 License: GPL (>= 2)
 LazyLoad: yes
-biocViews: Microarray, CpGIsland
+biocViews: Microarray, CpGIsland, DNAMethylation

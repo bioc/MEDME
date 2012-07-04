@@ -30,7 +30,7 @@ Objects can be created by calls of the form \code{new("MEDMEset", ...)}.
 This object could initially host the MeDIP normalized logRatio data, as returned by the \code{\link{MEDME.readFiles}} function. Afterwards,
 the same obejct is returned by most of the MEDME library function. Each time, a new slot is filled with additional data, as smoothed
 logR or Absolute/Relative Methylation Scores (AMS and RMS respectively). At the end of the analysis, usually after a call to the
-\code{\link{predict}} function, the \code{\link{MEDME.writeFiles}} function can be used to generate SGR or GFF files from this object.
+\code{\link{MEDME.predict}} function, the \code{\link{MEDME.writeFiles}} function can be used to generate SGR or GFF files from this object.
 }
 \section{Slots}{
 	 \describe{
