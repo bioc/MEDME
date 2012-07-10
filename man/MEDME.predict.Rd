@@ -1,11 +1,11 @@
-\name{predict}
-\alias{predict}
+\name{MEDME.predict}
+\alias{MEDME.predict}
 \title{ Applying the logistic model on MeDIP enrichment data }
 \description{
   This allows the probe-level determination of MeDIP smoothed data, as well as absolute and relative methylation levels (AMS and RMS respectively)
 }
 \usage{
-predict(data, MEDMEfit, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
+MEDME.predict(data, MEDMEfit, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
 }
 \arguments{
   \item{data}{ An object of class MEDMEset}
@@ -27,6 +27,6 @@ testMEDMEset = smooth(data = testMEDMEset[1:1000, ])
 library(BSgenome.Hsapiens.UCSC.hg18)
 testMEDMEset = CGcount(data = testMEDMEset)
 MEDMEmodel = MEDME(data = testMEDMEset, sample = 1, CGcountThr = 1, figName = NULL)
-testMEDMEset = predict(data = testMEDMEset, MEDMEfit = MEDMEmodel, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
+testMEDMEset = MEDME.predict(data = testMEDMEset, MEDMEfit = MEDMEmodel, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear')
 }
 \references{\url{http://genome.cshlp.org/cgi/content/abstract/gr.080721.108v1}}
