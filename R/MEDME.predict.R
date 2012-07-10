@@ -1,4 +1,4 @@
-`predict` <-
+`MEDME.predict` <-
 function(data, MEDMEfit, MEDMEextremes = c(1,32), wsize = 1000, wFunction='linear') {
     # checks
     if(class(data)!='MEDMEset') stop('data needs to be an object of class MEDMEset ..')
